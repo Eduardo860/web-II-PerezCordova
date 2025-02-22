@@ -1,0 +1,12 @@
+<div class="card">
+    <div>
+        <img src="{{ user.photo }}" alt="Foto de {{ user.name }}" class="card-img">
+    </div>
+    <div>
+        <p><strong>Name:</strong> {{ user.name }} </p>
+        <p><strong>Email:</strong> {{ user.email }} </p>
+    </div>
+    <div>
+        <a href="{% url 'userDetail' user.id %}">Ver</a> 
+    </div>
+</div>

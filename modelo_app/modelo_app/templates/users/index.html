@@ -1,33 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USERS</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/users.css' %}">
+{% extends "base/base.html" %}
+{% load static %}
 
-</head>
-<body>
-    <h1>ESTAMOS EN USERS</h1>
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/users.css' %}">  
+{% endblock %}
 
-    <h1>{{ titulo }}</h1>
-    <p>Total de clientes: {{ total_users }}</p>
+{% block content %}
+    <div class="users-section">  
+        <h1>{{ titulo }}</h1>
+        <p>Total de clientes: {{ total_users }}</p>
 
-    <div class="container">
-        {% for user in users %}
-        <div class="card">
-            <img src="{{ user.photo }}" alt="Foto de {{ user.name }}">
-            <div class="card-body">
-                <h2 class="card-title">{{ user.name }}</h2>
-                <div class="card-data">
-                    <p class="card-text"><strong>ID:</strong> {{ user.id }}</p>
-                    <p class="card-text"><strong>Edad:</strong> {{ user.age }}</p>
-                </div>
-            </div>
+        <div class="user-list">
+            {% for user in users %}
+                {% include 'components/UserCard.html' with user=user %}
+            {% empty %}
+                <p>No hay usuarios registrados.</p>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-
-</body>
-</html>
+{% endblock %}
