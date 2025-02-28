@@ -23,8 +23,9 @@
 }
 
 .tarjeta-evento img {
-    width: 30%;
+    width: 40%;
     height: auto;
+    object-fit: cover;
 }
 
 .info-evento {
