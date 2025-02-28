@@ -1,0 +1,26 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/boletos.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2 class="titulo-seccion">Boletos Disponibles</h2>
+
+<div class="grid-boletos">
+    {% for boleto in boletos %}
+    <div class="tarjeta-boleto">
+        <img src="https://img.freepik.com/vector-gratis/vector-dos-entradas-cine-disenadas-cerca-vista-superior-aislada-sobre-fondo-blanco_1284-47320.jpg" alt="Boleto">
+        <div class="info-boleto">
+            <h3>Boleto {{ forloop.counter }}</h3>
+            <p><strong>Localidad:</strong> {{ boleto.evento.localidad.name }}</p>
+            <p><strong>Precio:</strong> ${{ boleto.precio }}</p>
+            <button class="boton">Comprar</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

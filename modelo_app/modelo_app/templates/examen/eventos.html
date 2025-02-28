@@ -1,0 +1,26 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/eventos.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2 class="titulo-seccion">Eventos</h2>
+
+<div class="grid-eventos">
+    {% for evento in eventos %}
+    <div class="tarjeta-evento">
+        <img src="{{ evento.imagen_url }}" alt="Evento">
+        <div class="info-evento">
+            <h3>{{ evento.name }}</h3>
+            <p><strong>Localidad:</strong> {{ evento.localidad.name }}</p>
+            <p style="font-size: small;"><strong>Descripción:</strong> {{ evento.descripcion }}</p>
+            <a href="#" class="boton">Boletos</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

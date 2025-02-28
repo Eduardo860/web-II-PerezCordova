@@ -1,0 +1,61 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="imagenes">
+
+    <img src="https://img.freepik.com/vector-gratis/ilustracion-gradiente-celebracion-carnaval-barranquilla_23-2151152833.jpg?ga=GA1.1.1083500443.1740729389&semt=ais_hybrid" alt="">
+    <img src="https://img.freepik.com/vector-gratis/ilustracion-gradiente-celebracion-carnaval-barranquilla_23-2151152833.jpg?ga=GA1.1.1083500443.1740729389&semt=ais_hybrid" alt="">
+
+    <div class="dos">
+        <img src="https://img.freepik.com/vector-gratis/ilustracion-gradiente-celebracion-carnaval-barranquilla_23-2151152833.jpg?ga=GA1.1.1083500443.1740729389&semt=ais_hybrid" alt="">
+        <img src="https://img.freepik.com/vector-gratis/ilustracion-gradiente-celebracion-carnaval-barranquilla_23-2151152833.jpg?ga=GA1.1.1083500443.1740729389&semt=ais_hybrid" alt="">
+    </div>
+
+    <img src="https://img.freepik.com/vector-gratis/ilustracion-gradiente-celebracion-carnaval-barranquilla_23-2151152833.jpg?ga=GA1.1.1083500443.1740729389&semt=ais_hybrid" alt="">
+
+</div>
+
+
+
+<h2 class="titulo-seccion">NOTICIAS</h2>
+
+<div class="contenedor-noticias-eventos">
+    <!-- Sección de Noticias (Izquierda) -->
+    <div class="noticias">
+        {% for noticia in noticias|slice:":2" %}
+        <div class="noticia">
+            <img src="{{ noticia.imagen_url }}" alt="Noticia">
+            <div class="contenido-noticia">
+                <h3>{{ noticia.nombre }}</h3>
+                <p>{{ noticia.descripcion }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay noticias disponibles.</p>
+        {% endfor %}
+    </div>
+
+    <!-- Sección de Eventos (Derecha) -->
+    <div class="eventos">
+        {% for evento in eventos|slice:":3" %}
+        <div class="evento">
+            <img src="{{ evento.imagen_url }}" alt="Evento">
+            <div class="contenido-evento">
+                <h3>Evento #{{ forloop.counter }}</h3>
+                <p><strong>Localidad:</strong> {{ evento.localidad.name }}</p>
+                <p><strong>Descripción:</strong> {{ evento.descripcion }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay eventos disponibles.</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

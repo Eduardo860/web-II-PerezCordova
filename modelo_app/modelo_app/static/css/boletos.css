@@ -1,0 +1,51 @@
+.grid-boletos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);    
+    gap: 10px;
+    justify-items: center;
+
+}
+
+.tarjeta-boleto {
+    width: 20rem;
+    background: white;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.tarjeta-boleto img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.info-boleto h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.boton:hover {
+    background-color: #444;
+}
+
+.titulo-seccion {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+}
