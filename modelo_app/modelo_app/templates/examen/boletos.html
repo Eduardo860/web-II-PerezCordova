@@ -7,20 +7,20 @@
 
 {% block content %}
 
-<h2 class="titulo-seccion">Boletos Disponibles</h2>
+<h2 class="titulo-seccion">
+    {% if evento %}Boletos para {{ evento.name }}{% else %}Boletos Generales{% endif %}
+</h2>
 
 <div class="grid-boletos">
-    {% for boleto in boletos %}
-    <div class="tarjeta-boleto">
-        <img src="https://img.freepik.com/vector-gratis/vector-dos-entradas-cine-disenadas-cerca-vista-superior-aislada-sobre-fondo-blanco_1284-47320.jpg" alt="Boleto">
-        <div class="info-boleto">
-            <h3>Boleto {{ forloop.counter }}</h3>
-            <p><strong>Localidad:</strong> {{ boleto.evento.localidad.name }}</p>
-            <p><strong>Precio:</strong> ${{ boleto.precio }}</p>
-            <button class="boton">Comprar</button>
+    {% if boletos %}
+        {% for boleto in boletos %}
+        {% include 'components/boletoC.html' with imagen='https://img.freepik.com/vector-gratis/vector-dos-entradas-cine-disenadas-cerca-vista-superior-aislada-sobre-fondo-blanco_1284-47320.jpg' name="Boleto "|add:forloop.counter localidad=boleto.evento.localidad.name precio=boleto.precio %}
+        {% endfor %}
+    {% else %}
+        <div class="mensaje-vacio">
+            <p>🎟️ Sin Boletos disponibles en este momento.</p>
         </div>
-    </div>
-    {% endfor %}
+    {% endif %}
 </div>
 
 {% endblock %}

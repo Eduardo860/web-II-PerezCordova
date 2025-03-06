@@ -56,7 +56,7 @@ ROOT_URLCONF = 'modelo_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'modelo_app/templates'],
+        'DIRS': [BASE_DIR / 'modelo_app/templates', BASE_DIR / 'modelo_app/templates/examen'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

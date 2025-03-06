@@ -1,0 +1,71 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/agregar_producto.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        
+        <div class="titulos">
+            <h2 class="titulo">Agregar Producto</h2>
+            <h2 class="titulo">Reglas</h2>
+        </div>
+      
+        <div class="form-reglas">
+
+            <div class="form-container">
+                <form id="create-product-form" method="POST" action="{% url 'crear_producto' %}">
+                    {% csrf_token %}
+                    
+                    <label>Nombre del Producto:</label>
+                    <input type="text" name="name" id="name" required>
+                
+                    <label>Precio:</label>
+                    <input type="number" name="precio" id="precio" required>
+                
+                    <label>Localidad:</label>
+                    <select name="localidad" id="localidad" required></select>
+                
+                    <button type="submit" class="boton-negro">Agregar</button>
+                </form>
+            </div>
+    
+            <div class="reglas-container">
+                <ul>
+                    <li>Ningún campo debe de quedar vacío.</li>
+                    <li>Mostrar mensaje de guardado o de error en caso de fallar.</li>
+                    <li>El envío de información debe ser por medio del método `FETCH` de JS.</li>
+                    <li>El botón "Eliminar" deberá de hacerse por medio del método `FETCH` de JS.</li>
+                    <li>El precio del producto debe ser mayor a 0.</li>
+                    <li>Solo se pueden agregar 10 productos por día.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <h3 class="titulo">Productos recientemente agregados</h3>
+        <div class="tabla-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Localidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="productos-lista">
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        window.CSRF_TOKEN = "{{ csrf_token }}"; 
+    </script>
+    
+    <script src="{% static 'js/producto.js' %}"></script>
+{% endblock %}

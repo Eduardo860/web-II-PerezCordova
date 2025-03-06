@@ -1,0 +1,83 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/agregar_evento.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        
+        <div class="titulos">
+            <h2 class="titulo">Agregar Evento</h2>
+            <h2 class="titulo">Reglas</h2>
+        </div>
+      
+
+        <div class="form-reglas">
+
+            <div class="form-container">
+               
+                <form id="create-event-form" method="POST" action="{% url 'crear_evento' %}">
+                    {% csrf_token %}
+                    
+                    <label>Nombre del Evento:</label>
+                    <input type="text" name="name" id="name" required>
+                
+                    <label>Fecha inicio:</label>
+                    <input type="datetime-local" name="fecha_inicio" id="fecha_inicio" required>
+                
+                    <label>Fecha fin:</label>
+                    <input type="datetime-local" name="fecha_fin" id="fecha_fin" required>
+                
+                    <label>Localidad:</label>
+                    <select name="localidad" id="localidad" required></select>
+                
+                    <label>Imagen del Evento (URL):</label>
+                    <input type="text" name="imagen_url" id="imagen_url" placeholder="Pega aquí la URL de la imagen" required>
+                
+                    <button type="submit" class="boton-negro">Agregar</button>
+                </form>
+            </div>
+    
+            <div class="reglas-container">
+                <ul>
+                    <li>Ningún campo debe de quedar vacío.</li>
+                    <li>La fecha de fin no puede ser menor que la fecha de inicio.</li>
+                    <li>La fecha de inicio debe ser mayor al día de hoy.</li>
+                    <li>No puedes agregar dos eventos seguidos de la misma localidad.</li>
+                    <li>Mostrar mensaje de guardado o de error en caso de fallar.</li>
+                    <li>El envío de información debe ser por medio del método `FETCH` de JS.</li>
+                    <li>El botón "Eliminar" deberá de hacerse por medio del método `FETCH` de JS.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <h3 class="titulo">Eventos recientemente agregados</h3>
+        <div class="tabla-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Fecha inicio</th>
+                        <th>Fecha fin</th>
+                        <th>Localidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="eventos-lista">
+                    <!-- Los eventos se cargarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+      
+    </div>
+
+    <script>
+        window.CSRF_TOKEN = "{{ csrf_token }}"; 
+    </script>
+    
+    <script src="{% static 'js/eventos.js' %}"></script>
+{% endblock %}

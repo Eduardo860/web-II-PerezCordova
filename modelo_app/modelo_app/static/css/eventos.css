@@ -1,3 +1,22 @@
+.boton-negro {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.boton-negro:hover {
+    background-color: #000;
+}
+
+
 .grid-eventos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);    

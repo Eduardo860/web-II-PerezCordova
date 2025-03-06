@@ -6,4 +6,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", index_view, name="index"),
     path("examen/",include('examen.urls')),
+
    ]

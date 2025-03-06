@@ -9,18 +9,15 @@
 
 <h2 class="titulo-seccion">Eventos</h2>
 
+<a href="{% url 'agregar_evento' %}">
+    <button class="boton-negro">Agregar Evento</button>
+</a>
+
 <div class="grid-eventos">
     {% for evento in eventos %}
-    <div class="tarjeta-evento">
-        <img src="{{ evento.imagen_url }}" alt="Evento">
-        <div class="info-evento">
-            <h3>{{ evento.name }}</h3>
-            <p><strong>Localidad:</strong> {{ evento.localidad.name }}</p>
-            <p style="font-size: small;"><strong>Descripción:</strong> {{ evento.descripcion }}</p>
-            <a href="#" class="boton">Boletos</a>
-        </div>
-    </div>
+    {% include 'components/eventoC.html' with imagen=evento.imagen_url name=evento.name localidad=evento.localidad.name descripcion=evento.descripcion %}
     {% endfor %}
+
 </div>
 
 {% endblock %}
