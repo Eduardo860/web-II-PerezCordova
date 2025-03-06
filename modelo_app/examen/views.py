@@ -57,20 +57,16 @@ def createEvent(request):
             localidad = body.get("localidad")
             imagen_url = body.get("imagen_url")
 
-            # 📌 LOG para verificar que los datos llegan correctamente
             print("Datos Recibidos:", name, fecha_inicio, fecha_fin, localidad, imagen_url)
 
             if not name or not fecha_inicio or not fecha_fin or not localidad:
                 return JsonResponse({"message": "Todos los campos son obligatorios", "status": "error"}, status=400)
 
-            # 📌 Validar que la fecha de inicio sea mayor a la actual
             if now().isoformat() > fecha_inicio:
                 return JsonResponse({"message": "La fecha de inicio debe ser mayor al día actual", "status": "error"}, status=400)
 
-            # 📌 Verificar si la localidad existe
             localidad_obj = get_object_or_404(Localidad, name=localidad)
 
-            # 📌 Crear el evento en la base de datos
             evento = Evento(
                 name=name,
                 fecha_inicio=fecha_inicio,

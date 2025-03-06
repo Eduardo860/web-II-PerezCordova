@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     cargarLocalidades();
     mostrarProductos();
-    
+
     const form = document.querySelector("#create-product-form");
 
     if (form) {
@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// ✅ 1. Cargar localidades dinámicamente en el `<select>`
 async function cargarLocalidades() {
     try {
         let response = await fetch('/examen/api/localidades/');
@@ -21,7 +20,7 @@ async function cargarLocalidades() {
         let localidades = await response.json();
         let select = document.querySelector("#localidad");
 
-        select.innerHTML = ""; // Limpiar opciones antes de agregar nuevas
+        select.innerHTML = ""; 
         localidades.forEach(localidad => {
             let option = document.createElement("option");
             option.value = localidad.name;
@@ -35,13 +34,29 @@ async function cargarLocalidades() {
     }
 }
 
-// ✅ 2. Agregar un nuevo producto con `fetch`
+async function contarProductosHoy() {
+    try {
+        let response = await fetch('/examen/api/productos/');
+        if (!response.ok) throw new Error("No se pudieron obtener los productos");
+
+        let productos = await response.json();
+        let hoy = new Date().toISOString().split("T")[0];
+
+        let productosHoy = productos.filter(producto => producto.fecha_creacion.startsWith(hoy));
+
+        console.log(`Productos agregados hoy: ${productosHoy.length}`);
+        return productosHoy.length;
+    } catch (error) {
+        console.error("Error al contar productos del día:", error);
+        return 0; 
+    }
+}
+
 async function agregarProducto() {
     const name = document.querySelector("#name").value;
     const precio = document.querySelector("#precio").value;
     const localidad = document.querySelector("#localidad").value;
 
-    // 📌 Validaciones
     if (!name || !precio || !localidad) {
         alert("Todos los campos son obligatorios");
         return;
@@ -52,13 +67,19 @@ async function agregarProducto() {
         return;
     }
 
+    let productosHoy = await contarProductosHoy();
+    if (productosHoy >= 10) {
+        alert("No puedes agregar más de 10 productos en un solo día.");
+        return;
+    }
+
     const data = {
         name: name,
         precio: precio,
         localidad: localidad
     };
 
-    console.log("Datos Enviados:", data); // 🔥 Verifica que los datos se están enviando correctamente
+    console.log("Datos Enviados:", data);
 
     try {
         let response = await fetch('/examen/api/productos/crear/', {
@@ -72,12 +93,18 @@ async function agregarProducto() {
         });
 
         let result = await response.json();
-        console.log("Respuesta del servidor:", result); // 🔥 Verifica la respuesta
+        console.log("Respuesta del servidor:", result); 
 
         if (response.ok) {
-            alert("Producto agregado con éxito");
+            let productosRestantes = 9 - productosHoy;
+            let mensaje = productosRestantes > 0 
+                ? `Producto agregado con éxito. Te quedan ${productosRestantes} productos para agregar hoy.`
+                : "Producto agregado con éxito. No puedes agregar más productos hoy.";
+
+            alert(mensaje);
+
             document.querySelector("#create-product-form").reset();
-            mostrarProductos(); // ✅ Refrescar la lista
+            mostrarProductos();
         } else {
             alert("Error: " + result.message);
         }
@@ -86,7 +113,6 @@ async function agregarProducto() {
     }
 }
 
-// ✅ 3. Mostrar los productos en la tabla
 async function mostrarProductos() {
     try {
         let response = await fetch('/examen/api/productos/');
@@ -114,7 +140,6 @@ async function mostrarProductos() {
     }
 }
 
-// ✅ 4. Eliminar un producto
 async function eliminarProducto(id) {
     if (!confirm("¿Estás seguro de que quieres eliminar este producto?")) return;
 

@@ -53,7 +53,6 @@ async function verificarUltimaLocalidad(localidad) {
     }
 }
 
-// ✅ 3. Agregar un nuevo evento con `fetch`
 async function agregarEvento() {
     const name = document.querySelector("#name").value;
     const fecha_inicio = document.querySelector("#fecha_inicio").value;
@@ -61,7 +60,6 @@ async function agregarEvento() {
     const localidad = document.querySelector("#localidad").value;
     const imagen_url = document.querySelector("#imagen_url").value;
 
-    // 📌 Validaciones de fecha
     let hoy = new Date();
     let inicio = new Date(fecha_inicio);
     let fin = new Date(fecha_fin);
@@ -81,9 +79,8 @@ async function agregarEvento() {
         return;
     }
 
-    // 📌 Verificar si la localidad es la misma que el último evento
     let esValido = await verificarUltimaLocalidad(localidad);
-    if (!esValido) return;  // 🚨 Si es `false`, detenemos la función
+    if (!esValido) return;  
 
     const data = {
         name: name,
@@ -112,7 +109,7 @@ async function agregarEvento() {
         if (response.ok) {
             alert("Evento agregado con éxito");
             document.querySelector("#create-event-form").reset();
-            mostrarEventos(); // ✅ Actualizar lista de eventos
+            mostrarEventos(); 
         } else {
             alert("Error: " + result.message);
         }
@@ -120,7 +117,6 @@ async function agregarEvento() {
         console.error("Error al enviar evento:", error);
     }
 }
-
 
 async function mostrarEventos() {
     try {
@@ -137,7 +133,7 @@ async function mostrarEventos() {
                     <td>${evento.name}</td>
                     <td>${evento.fecha_inicio}</td>
                     <td>${evento.fecha_fin}</td>
-                    <td>${evento.localidad__name}</td>  <!-- ✅ Corregido -->
+                    <td>${evento.localidad__name}</td>
                     <td><button class='boton-eliminar' onclick='eliminarEvento(${evento.id})'>Eliminar</button></td>
                 </tr>
             `;
@@ -149,8 +145,6 @@ async function mostrarEventos() {
         console.error("Error al obtener eventos:", error);
     }
 }
-
-
 
 async function eliminarEvento(id) {
     if (!confirm("¿Estás seguro de que quieres eliminar este evento?")) return;
@@ -180,7 +174,3 @@ async function eliminarEvento(id) {
         console.error("Error al eliminar evento:", error);
     }
 }
-
-
-
-
