@@ -1,0 +1,39 @@
+.containerLogin {
+    border: 1px red solid;
+    width: 50%;
+    margin: auto;
+    background-color: black;
+
+}
+
+.containerLogin h3 {
+    text-align: justify;
+    padding: 10px;
+    color: white;
+}
+
+.formLogin{
+    display: flex;
+    flex-direction: column;
+    column-gap: 1rem;
+}
+
+.formLogin div {
+    padding: 15px;
+}
+
+.formLogin div input {
+    padding: 15px;
+    width: 85%;
+    margin: auto;
+}
+
+.login-button{
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+
+
+}
