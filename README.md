@@ -1,2 +1,2 @@
 # web-II-PerezCordova
-Proyecto con Django
+Proyecto 1 Semana Santa React
