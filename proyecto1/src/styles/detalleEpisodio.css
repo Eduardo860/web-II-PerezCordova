@@ -1,0 +1,23 @@
+.detalle-episodio{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo{
+    font-size: 2.8rem;
+}
+
+.subtitulo{
+    font-size: 1.2rem;
+}
+
+.personajes{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+

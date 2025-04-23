@@ -1,0 +1,37 @@
+.personaje-card {
+    width: 25rem;
+    height: auto;
+    background-color: #f9f9f9;
+    border-radius: 10%;
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+    transition: transform 0.2s;
+    color: black;
+}
+
+.personaje-img {
+    width: 25rem;
+    height: 20rem;
+    border-radius: 10%;
+    margin-bottom: 0.5rem;
+}  
+.personaje-nombre {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.personaje-botones button {
+    margin: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #0b00a1;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.personaje-botones button:hover {
+    background-color: #080075;
+}
