@@ -7,7 +7,6 @@ import "../styles/busquedaPersonaje.css"
 export default function BusquedaPersonaje() {
     const { filtros, dispatch } = useContext(FiltroContext);
     const [personajes, setPersonajes] = useState([]);
-    const [especies, setEspecies] = useState([]);
 
     useEffect(() => {
     const query = new URLSearchParams(
@@ -31,16 +30,7 @@ export default function BusquedaPersonaje() {
         dispatch({ type: "RESET" });
     }; 
 
-    useEffect(() => {
-        fetch('https://rickandmortyapi.com/api/character')
-        .then(res => res.json())
-        .then(data => {
-            const especiesUnicas = [
-            ...new Set(data.results.map(p => p.species).filter(Boolean))
-            ];
-            setEspecies(especiesUnicas);
-        });
-    }, []);
+
     return (
         <div className="busqueda-page">
             <h2>Buscador de Personajes</h2>
@@ -52,20 +42,9 @@ export default function BusquedaPersonaje() {
                 <option value="alive">Alive</option>
                 <option value="dead">Dead</option>
                 <option value="unknown">Unknown</option>
-            </select>
-    
-            <input
-            name="species"
-            placeholder="Especie"
-            value={filtros.species}
-            onChange={handleChange}
-            list="lista-especies"
-            />
-            <datalist id="lista-especies">
-            {especies.map((esp, i) => (
-                <option key={i} value={esp} />
-            ))}
-            </datalist>            
+            </select>          
+
+            <input name="species" placeholder="Especie" value={filtros.species} onChange={handleChange} />
 
             <input name="type" placeholder="Tipo" value={filtros.type} onChange={handleChange} />
     

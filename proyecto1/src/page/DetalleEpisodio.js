@@ -1,35 +1,46 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/detalleEpisodio.css"
+import "../styles/detalleEpisodio.css";
 import PersonajeCard from "../components/PersonajeCard";
 
 export default function DetalleEpisodio() {
 const { id } = useParams();
 const [episodio, setEpisodio] = useState(null);
-const [personajes, setPersonajes] = useState([])
+const [masVotados, setMasVotados] = useState([]);
+const [menosVotados, setMenosVotados] = useState([]);
 
 useEffect(() => {
     fetch(`https://rickandmortyapi.com/api/episode/${id}`)
-    .then((res) => res.json())
-    .then((data) => {
+    .then(res => res.json())
+    .then(data => {
         setEpisodio(data);
+        const urls = data.characters;
 
-        const primerosTres = data.characters.slice(0, 3);  
-        Promise.all(
-            primerosTres.map((url) => fetch(url).then((res) => res.json()))
-        ).then((dataPersonajes) => setPersonajes(dataPersonajes));
+        Promise.all(urls.map(url => fetch(url).then(res => res.json())))
+        .then(dataPersonajes => {
+            const votos = JSON.parse(localStorage.getItem("personaje-votos")) || {};
+
+            // Agregamos likes a cada personaje
+            const personajesConLikes = dataPersonajes.map(p => ({
+            ...p,
+            likes: votos[p.id]?.likes || 0,
+            }));
+
+            // Ordenar por likes descendente
+            const ordenados = [...personajesConLikes].sort((a, b) => b.likes - a.likes);
+
+            // Separar top 2 y bottom 2
+            setMasVotados(ordenados.slice(0, 2));
+            setMenosVotados(ordenados.slice(-2));
+        });
     })
-    .catch((err) => console.log("Error:", err));
+    .catch(err => console.log("Error:", err));
 }, [id]);
-
 
 if (!episodio) return <p>Cargando episodio...</p>;
 
-
 return (
-
-    <div className="detalle-episodio">
-
+        <div className="detalle-episodio">
         <div className="titulo">
             <h2>{episodio.name}</h2>
         </div>
@@ -39,12 +50,21 @@ return (
             <p><strong>Código:</strong> {episodio.episode}</p>
         </div>
 
-        <div className="personajes">
-            {personajes.map((p) => (
-            <PersonajeCard key={p.id} personaje={p} />
+        <div className="votados-contenedor">
+            <h3>⭐ Personajes más votados</h3>
+            <div className="mas-votados">
+            {masVotados.map(p => (
+                <PersonajeCard key={p.id} personaje={p} />
             ))}
-        </div>
+            </div>
 
-    </div>
+            <h3>⬇️ Personajes menos votados</h3>
+            <div className="menos-votados">
+            {menosVotados.map(p => (
+                <PersonajeCard key={p.id} personaje={p} />
+            ))}
+            </div>
+        </div>
+        </div>
 );
 }

@@ -21,3 +21,17 @@
     gap: 1rem;
 }
 
+.votados-contenedor{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.mas-votados{
+    display: flex;
+    flex-direction: row;
+}
+
+.menos-votados{
+    display: flex;
+    flex-direction: row;
+}
