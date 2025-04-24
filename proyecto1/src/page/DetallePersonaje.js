@@ -9,22 +9,19 @@ const [episodios, setEpisodios] = useState([]);
 const [likes, setLikes] = useState(0);
 const [loaded, setLoaded] = useState(false);
 
-  // ✅ Cargar personaje y episodios
 useEffect(() => {
     fetch(`https://rickandmortyapi.com/api/character/${id}`)
     .then(res => res.json())
     .then(data => {
         setPersonaje(data);
 
-        // Obtener primeros episodios (limitado a 20 para evitar sobrecarga)
         Promise.all(
-        data.episode.slice(0, 20).map(url => fetch(url).then(res => res.json()))
+        data.episode.slice(0, 21).map(url => fetch(url).then(res => res.json()))
         ).then(setEpisodios);
     })
     .catch(err => console.log("Error:", err));
 }, [id]);
 
-  // ✅ Leer likes desde localStorage
 useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("personaje-votos")) || {};
     const votos = stored[id];
@@ -32,7 +29,6 @@ useEffect(() => {
     setLoaded(true);
 }, [id]);
 
-  // ✅ Guardar likes en localStorage cuando cambian
 useEffect(() => {
     if (!loaded) return;
     const stored = JSON.parse(localStorage.getItem("personaje-votos")) || {};

@@ -10,7 +10,7 @@ export default function Menu(){
                     <ul className='nav-list'>
                         <li className='nav-item'><Link to= "/">Inicio</Link></li>
                         <li className='nav-item'><Link to= "/personaje">Busqueda de Personajes</Link></li>
-                        <li className='nav-item'><Link to= "/Estatica">Estatica</Link></li>
+                        <li className='nav-item'><Link to= "/extra">Estatica</Link></li>
 
 
                     </ul>

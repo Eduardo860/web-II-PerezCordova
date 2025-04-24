@@ -20,16 +20,13 @@ useEffect(() => {
         .then(dataPersonajes => {
             const votos = JSON.parse(localStorage.getItem("personaje-votos")) || {};
 
-            // Agregamos likes a cada personaje
             const personajesConLikes = dataPersonajes.map(p => ({
             ...p,
             likes: votos[p.id]?.likes || 0,
             }));
 
-            // Ordenar por likes descendente
             const ordenados = [...personajesConLikes].sort((a, b) => b.likes - a.likes);
 
-            // Separar top 2 y bottom 2
             setMasVotados(ordenados.slice(0, 2));
             setMenosVotados(ordenados.slice(-2));
         });
@@ -51,14 +48,14 @@ return (
         </div>
 
         <div className="votados-contenedor">
-            <h3>⭐ Personajes más votados</h3>
+            <h3>Personajes más votados</h3>
             <div className="mas-votados">
             {masVotados.map(p => (
                 <PersonajeCard key={p.id} personaje={p} />
             ))}
             </div>
 
-            <h3>⬇️ Personajes menos votados</h3>
+            <h3>Personajes menos votados</h3>
             <div className="menos-votados">
             {menosVotados.map(p => (
                 <PersonajeCard key={p.id} personaje={p} />

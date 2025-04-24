@@ -1,37 +1,76 @@
 .personaje-card {
-    width: 25rem;
-    height: auto;
     background-color: #f9f9f9;
-    border-radius: 10%;
-    text-align: center;
-    padding: 1rem;
-    margin: 1rem;
-    transition: transform 0.2s;
-    color: black;
+    padding: 2rem;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    width: 30rem;
+    margin: 1rem auto;
 }
 
-.personaje-img {
-    width: 25rem;
-    height: 20rem;
-    border-radius: 10%;
+.personaje-contenido {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.personaje-texto {
+    flex: 1;
+}
+
+.personaje-texto h3 {
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
-}  
-.personaje-nombre {
+    color: #2c3e50;
+}
+
+.personaje-texto p {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.btn-detalle {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #2c3e50;
+    background-color: transparent;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}  
+.btn-detalle:hover {
+    background-color: #2c3e50;
+    color: white;
 }
 
-.personaje-botones button {
-    margin: 0.3rem;
+.personaje-imagen img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.btn-like {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background:  #043f1a;
+    color: white;
     padding: 0.4rem 0.8rem;
     font-size: 0.9rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #0b00a1;
-    color: white;
+    border-radius: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     cursor: pointer;
-    transition: background-color 0.2s;
 }
-.personaje-botones button:hover {
-    background-color: #080075;
+.btn-like:hover{
+    background: #065c27;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }

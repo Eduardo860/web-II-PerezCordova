@@ -1,0 +1,253 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 100%;
+    height: 10rem;
+    color: black;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.header img{
+    height: 80%;
+    width: 15%;
+    padding-left: 12rem;
+    cursor: pointer;
+
+}
+
+.hamburguesa{
+    border: none;
+    font-size: 4rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.botones-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+} 
+.dropdown {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    cursor: pointer;
+} 
+
+.telefono {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+.telefono img{
+    height:auto;
+    width: 1.2rem;
+    padding-left: 0rem;
+    cursor: default;
+}
+
+.flecha {
+    font-size: 0.8rem;
+    color: #444;
+}  
+
+.body{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    height: auto;
+    padding-bottom: 10rem;
+    color: black;
+}
+
+.banner{
+    display: flex;
+    flex-direction: row;
+    height: 40rem;
+    object-fit: contain;
+    background-color: black;
+    color: white;
+}
+
+.banner img {
+    width: 50%;
+    height: 100% ;
+}
+
+.banner-text{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    
+}
+
+.boton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    justify-content: flex-start;
+    padding-right: 14rem;
+
+}
+
+.boton:hover {
+    transform: scale(1.1);
+}
+
+.boton img {
+    height: 1rem;
+    width: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.boton button {
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    align-items: center;
+    padding-top: 5rem;
+}
+
+.contenido img{
+    height: 25rem;
+    width: 60%;
+}
+
+.contenido p{
+    width: 60%;
+}
+
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(247, 247, 247);
+    width: 100%;
+    height: 50rem;
+    align-items: center;
+}
+
+.footer-img{
+    height: 16rem;
+    width: 26rem;
+}
+
+.footer-info{
+    display: flex;
+    flex-direction: row;
+    height: 60%;
+    width: 100%;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    width: 55%;
+    height: auto;
+    justify-content: space-evenly;
+}
+
+.info-column{
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    color: black;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: auto;
+    align-items: center;
+    gap: 1rem;
+    color: black;
+}
+
+.form-inputs{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.form-inputs input{
+    width: 40%;
+    height: 3rem;
+}
+
+.form-inputs select{
+    width: 42%;
+    height: 3.4rem;
+}
+.form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 80%;
+    color: black;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    width: 90%;
+}  
+.form-checkbox input[type="checkbox"] {
+    width: 6rem;
+    height: 100%;
+    margin-top: 0.2rem;
+    padding-bottom: 1rem;
+}  
+.form-checkbox a {
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+}  
+
+.form-boton{
+    display: flex;
+    width: 85%;
+}
+.form-submit {
+    padding: 0.8rem 2rem;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: 30%;
+    height: 3.4rem;
+}  
+.form-submit:hover {
+    transform: scale(1.05);
+}  

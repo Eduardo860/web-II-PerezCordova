@@ -16,7 +16,7 @@ useEffect(() => {
         setLikes(votos.likes || 0);
     }
 
-    setLoaded(true); // ✅ listo para guardar después
+    setLoaded(true); 
 }, [personaje]);
 
 useEffect(() => {
@@ -32,19 +32,25 @@ const verDetalle = () => {
 };
 
 return (
-        <div className="personaje-card">
-        <img src={personaje.image} alt={personaje.name} className="personaje-img" />
-        <p className="personaje-nombre">{personaje.name}</p>
+    <div className="personaje-card">
+        <div className="personaje-contenido">
+            <div className="personaje-texto">
+                <h3>{personaje.name}</h3>
+                <p>Conócelo a fondo y descubre su historia en la serie.</p>
+                <button className="btn-detalle" onClick={verDetalle}>VER DETALLE</button>
+            </div>
 
-        <div className="personaje-botones">
-            <button onClick={verDetalle}>Ver Detalle</button>
-            <button onClick={(e) => {
-            e.stopPropagation();
-            setLikes(prev => prev + 1);
-            }}>
-            👍 Like ({likes})
-            </button>
+            <div className="personaje-imagen">
+                <img src={personaje.image} alt={personaje.name} className="personaje-img" />
+            </div>
         </div>
-        </div>
+
+        <button className="btn-like" onClick={(e) => {
+        e.stopPropagation();
+        setLikes(prev => prev + 1);
+        }}>
+        👍 {likes}
+        </button>
+    </div>
 );
 }

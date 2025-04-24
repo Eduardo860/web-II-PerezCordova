@@ -1,7 +1,7 @@
 .detalle-episodio{
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 1rem;
     gap: 1rem;
     align-items: center;
     justify-content: center;
@@ -18,20 +18,24 @@
 .personajes{
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 3rem;
 }
 
 .votados-contenedor{
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 100%;
 }
 .mas-votados{
     display: flex;
     flex-direction: row;
+    gap: 2rem;
 }
 
 .menos-votados{
     display: flex;
     flex-direction: row;
+    gap: 2rem;
+
 }

@@ -44,6 +44,12 @@
     font-weight: bold;
 } 
 
+.like button:hover{
+    background: #065c27;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
 
 .lista-episodios{
     width: 40%;
