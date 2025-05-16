@@ -40,7 +40,7 @@ html, body {
   position: absolute;
   top: 6rem;
   right: 30rem; /* lo empuja desde la derecha */
-  max-width: 40rem; /* controla el ancho máximo */
+  max-width: 50rem; /* controla el ancho máximo */
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -107,6 +107,11 @@ html, body {
   color: #2c2c2c;
 }
 
+.chef-img{
+    display: flex;
+    width: 1.3rem;
+    height: 1.3rem;
+}
 
 .main-content {
   display: flex;
@@ -118,6 +123,11 @@ html, body {
   flex: 0 0 20%; /* ← 20% del ancho */
   display: flex;
   flex-direction: column;
+}
+
+.categorias h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.8rem;
 }
 
 .categoria-btn {
@@ -157,12 +167,32 @@ html, body {
   flex-direction: column;
 }
 
-.busqueda-input {
-  padding: 0.75rem;
-  border-radius: 10px;
-  border: none;
+.busqueda-barra {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #0F1324; 
+  border-radius: 12px;
+  border: 1px solid #303847;
+  padding: 0.5rem 1rem;
   margin-bottom: 1rem;
-  width: 100%;
+  width: 40rem;
+}
+
+.busqueda-lupa {
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
+}
+
+.busqueda-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: transparent;
+  color: white;
+  width: 99%;
 }
 
 .grid-platillos {

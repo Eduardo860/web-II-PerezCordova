@@ -1,12 +1,16 @@
     import { useState, useEffect } from "react";
     import "./../styles/home.css";
     import pina from "../assets/pina.png"
+    import lupa from "../assets/lupa.png"
+    import chef from "../assets/chef-hat.svg"
     import PlatilloCard from "../components/platilloCard";
 
     export default function Home() {
     const [categorias, setCategorias] = useState([]);
     const [platillos, setPlatillos] = useState([]);
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Dessert");
+    const [busqueda, setBusqueda] = useState("");
+
 
     useEffect(() => {
         fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
@@ -27,19 +31,16 @@
         <div className="banner-content">
             {/* Top bar: logo + badge */}
             <div className="banner-header">
-            <div className="logo">
-                <span className="chef-icon">👨‍🍳</span>
-                <span className="logo-text">HomeChef</span>
-            </div>
-            <div className="badge">
-                <span role="img" aria-label="emoji">🍳</span> New recipe for you to try out, let's cook!
-            </div>
+                <div className="logo">
+                    <img src={chef} alt="Chef Logo" className="chef-img" />
+                    <span className="logo-text">HomeChef</span>
+                </div>
             </div>
 
             {/* Big text */}
             <h1 className="banner-title">
             Chefs<br />
-            <span>Academy</span><br />
+            <span>   Academy</span><br />
             Secrets
             </h1>
         </div>
@@ -54,7 +55,8 @@
             <br/>
             <h3>Categories</h3>
             <br/>
-            <br/>
+
+
 
             {categorias.map((cat) => (
                 <button
@@ -71,16 +73,25 @@
             {/* Búsqueda y platillos */}
             <div className="busqueda-platillos">
             <br/>
-            <input
-                type="text"
-                placeholder="Search recipes and more..."
-                className="busqueda-input"
-                // Puedes conectar esto a un filtro luego
-            />
+            <div className="busqueda-barra">
+                <img src={lupa} alt="lupa" className="busqueda-lupa"/>
+                <input
+                    type="text"
+                    placeholder="Search recipes and more..."
+                    className="busqueda-input"
+                    value={busqueda}
+                    onChange={(e)=> setBusqueda(e.target.value)}
+                />
+
+            </div>
 
             <div className="grid-platillos">
-                {platillos.map((meal) => (
-                <PlatilloCard key={meal.idMeal} platillo={meal} />
+                {platillos
+                .filter((meal) =>
+                    meal.strMeal.toLowerCase().includes(busqueda.toLowerCase())
+                )
+                .map((meal) => (
+                    <PlatilloCard key={meal.idMeal} platillo={meal} />
                 ))}
             </div>
             </div>
