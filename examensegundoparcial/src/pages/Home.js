@@ -10,6 +10,8 @@
     const [platillos, setPlatillos] = useState([]);
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Dessert");
     const [busqueda, setBusqueda] = useState("");
+    const [orden, setOrden] = useState("asc");
+
 
 
     useEffect(() => {
@@ -24,78 +26,87 @@
 
     return (
         <div className="home-container">
-        {/* Banner */}
-        <section className="banner">
-        <img src={pina} alt="Banner" className="banner-img" />
-        
-        <div className="banner-content">
-            {/* Top bar: logo + badge */}
-            <div className="banner-header">
-                <div className="logo">
-                    <img src={chef} alt="Chef Logo" className="chef-img" />
-                    <span className="logo-text">HomeChef</span>
+            <section className="banner">
+                <img src={pina} alt="Banner" className="banner-img" />
+                
+                <div className="banner-content">
+                    <div className="banner-header">
+                        <div className="logo">
+                            <img src={chef} alt="Chef Logo" className="chef-img" />
+                            <span className="logo-text">HomeChef</span>
+                        </div>
+                    </div>
+
+                    <h1 className="banner-title">
+                    Chefs<br />
+                    <span>Academy</span><br />
+                    Secrets
+                    </h1>
                 </div>
-            </div>
-
-            {/* Big text */}
-            <h1 className="banner-title">
-            Chefs<br />
-            <span>   Academy</span><br />
-            Secrets
-            </h1>
-        </div>
-        </section>
+            </section>
 
 
 
-        {/* Contenido principal */}
-        <section className="main-content">
-            {/* Categorías */}
-            <div className="categorias">
-            <br/>
-            <h3>Categories</h3>
-            <br/>
+            <section className="main-content">
 
+                <div className="categorias">
+                    <h3>Categories</h3>
+                        <div className="categorias-grid">
+                            {categorias.map((cat) => (
+                            <button
+                                key={cat.idCategory}
+                                className={`categoria-btn ${categoriaSeleccionada === cat.strCategory ? "activa" : ""}`}
+                                onClick={() => setCategoriaSeleccionada(cat.strCategory)}>
+                                <img src={cat.strCategoryThumb} alt={cat.strCategory} />
+                                {cat.strCategory}
+                            </button>
+                            ))}
+                        </div>
+                </div>
 
+                <div className="busqueda-platillos">
+                    <br/>
 
-            {categorias.map((cat) => (
-                <button
-                key={cat.idCategory}
-                className={`categoria-btn ${categoriaSeleccionada === cat.strCategory ? "activa" : ""}`}
-                onClick={() => setCategoriaSeleccionada(cat.strCategory)}
-                >
-                <img src={cat.strCategoryThumb} alt={cat.strCategory} />
-                {cat.strCategory}
-                </button>
-            ))}
-            </div>
+                    <div className="busqueda-sort">
 
-            {/* Búsqueda y platillos */}
-            <div className="busqueda-platillos">
-            <br/>
-            <div className="busqueda-barra">
-                <img src={lupa} alt="lupa" className="busqueda-lupa"/>
-                <input
-                    type="text"
-                    placeholder="Search recipes and more..."
-                    className="busqueda-input"
-                    value={busqueda}
-                    onChange={(e)=> setBusqueda(e.target.value)}
-                />
+                        <div className="busqueda-barra">
+                            <img src={lupa} alt="lupa" className="busqueda-lupa"/>
+                            <input
+                                type="text"
+                                placeholder="Search recipes and more..."
+                                className="busqueda-input"
+                                value={busqueda}
+                                onChange={(e)=> setBusqueda(e.target.value)}/>
+                        </div>
 
-            </div>
+                        <div className="sort-container">
+                            <select
+                                className="sort-select"
+                                value={orden}
+                                onChange={(e) => setOrden(e.target.value)}
+                                >
+                                <option value="asc">Sort by: Name ↑</option>
+                                <option value="desc">Sort by: Name ↓</option>
+                            </select>
+                        </div>
+                    </div>
 
-            <div className="grid-platillos">
-                {platillos
-                .filter((meal) =>
-                    meal.strMeal.toLowerCase().includes(busqueda.toLowerCase())
-                )
-                .map((meal) => (
-                    <PlatilloCard key={meal.idMeal} platillo={meal} />
-                ))}
-            </div>
-            </div>
-        </section>
+                    <div className="grid-platillos">
+                        {platillos
+                            .filter((meal) =>
+                                meal.strMeal.toLowerCase().includes(busqueda.toLowerCase())
+                            )
+                            .sort((a, b) =>
+                                orden === "asc"
+                                ? a.strMeal.localeCompare(b.strMeal)
+                                : b.strMeal.localeCompare(a.strMeal)
+                            )
+                            .map((meal) => (
+                                <PlatilloCard key={meal.idMeal} platillo={meal} />
+                            ))}
+                    </div>
+                </div>
+            </section>
         </div>
     );
     }

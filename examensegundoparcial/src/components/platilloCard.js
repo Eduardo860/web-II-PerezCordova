@@ -10,10 +10,12 @@ export default function PlatilloCard({ platillo }) {
 
     return (
         <div className="platillo-card" onClick={handleClick}>
-        <div className="platillo-img-container">
-            <img src={platillo.strMealThumb} alt={platillo.strMeal} />
-        </div>
-        <p className="platillo-nombre">{platillo.strMeal}</p>
+            
+            <div className="platillo-img-container">
+                <img src={platillo.strMealThumb} alt={platillo.strMeal} />
+            </div>
+
+            <p className="platillo-nombre">{platillo.strMeal}</p>
         </div>
     );
 }

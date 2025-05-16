@@ -1,111 +1,110 @@
 .detalle-container {
-  color: white;
-  padding: 2rem;
-  max-width: 50rem;
-  margin: auto;
-  background-color: #1c1c2e;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  text-align: justify;
-
+    color: white;
+    padding: 2rem;
+    max-width: 50rem;
+    margin: auto;
+    background-color: #1c1c2e;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: justify;
 }
 
 .btn-back {
-  background-color: transparent;
-  border: none;
-  color: #ffc107;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #ffc107;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
 }
 
 .detalle-header {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .detalle-img {
-  width: 20rem;
-  height: auto;
-  border-radius: 12px;
+    width: 20rem;
+    height: auto;
+    border-radius: 12px;
 }
 
 .detalle-info h1 {
-  margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .detalle-info p,
 .detalle-info a {
-  font-size: 1rem;
-  margin: 0.3rem 0;
-  color: #ddd;
+    font-size: 1rem;
+    margin: 0.3rem 0;
+    color: #ddd;
 }
 
 .detalle-instrucciones {
-  margin-top: 2rem;
+    margin-top: 2rem;
 }
 
 .detalle-instrucciones h3,
 .detalle-ingredientes h3 {
-  color: #ffc107;
+    color: #ffc107;
 }
 
 .detalle-ingredientes ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
 }
 
 .detalle-ingredientes li {
-  margin-bottom: 0.5rem;
-  background-color: #2e2e3f;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    margin-bottom: 0.5rem;
+    background-color: #2e2e3f;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .btn-delete {
-  background-color: #ff4d4d;
-  border: none;
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.85rem;
+    background-color: #ff4d4d;
+    border: none;
+    color: black;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
 }
 
 .cargando {
-  color: white;
-  text-align: center;
-  padding: 3rem;
+    color: white;
+    text-align: center;
+    padding: 3rem;
 }
 
 .video-preview {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  cursor: pointer;
-  border-radius: 12px;
-  overflow: hidden;
-  margin: 1rem 0;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 1rem 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .video-thumbnail {
-  width: 100%;
-  display: block;
+    width: 100%;
+    display: block;
 }
 
 .play-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3rem;
-  color: white;
-  text-shadow: 0 0 10px black;
-  pointer-events: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0 0 10px black;
+    pointer-events: none;
 }
